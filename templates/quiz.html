@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" action="/submit">
+        {% for question in questions %}
+            <fieldset>
+                <legend>{{ question.question }}</legend>
+                <select name="{{ loop.index0 }}">
+                {% for letter, answer in question.answers.items() %}
+                    <option value="{{ letter }}">{{ answer }}</option>
+                {% endfor %}
+                </select>
+            </fieldset>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
